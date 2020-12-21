@@ -1,0 +1,130 @@
+﻿@model myfinalproject.Models.Favs
+    @{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-md-start">
+    <div class="col-md-4">
+
+        <div class="header">
+            <nav class="h">
+
+                <ul>
+                    <li> <a href="@Url.Action("Index","Home")">Top chart</a></li>
+                    <li> <a href="@Url.Action("Contact","Home")">Contact us</a></li>
+                    <li> <a href="@Url.Action("About","Home")">About us</a></li>
+                    <li><a href="@Url.Action("Login","Home")" class="btn btn-warning"> Log in</a></li>
+                    <li><a href="@Url.Action("Logout","Home")" class="btn btn-warning"> Log out</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="card">
+            <div class="card-header">
+               <h3> Welcome </h3>
+            </div>
+            <div class="card-body">
+                @if (Session["FullName"] != null)
+                {
+                    <h4>Hello @Session["FullName"].ToString()</h4>
+                }
+            </div>
+
+            <div id="top">
+                <h2>Top songs</h2>
+                <br />
+
+                <h4 id="name">Justin Timberlake - Mirrors</h4>
+
+                <audio controls>
+                    <source src="~/music/Justin Timberlake - Mirrors.mp3" id="song" type="audio/mp3" />
+                </audio>
+
+                <br />
+                <h4 id="name">BTS - DNA</h4>
+                <audio controls>
+                    <source src="~/music/BTS - DNA.mp3" id="song" type="audio/mp3" />
+                </audio>
+                <br />
+                <h4 id="name">Ninety one - Men emes</h4>
+                <audio controls>
+                    <source src="~/music/Ninety One - Men Emes.mp3" id="song" type="audio/mp3" />
+                </audio>
+                <br />
+                <h4 id="name">Ariana Grande - 7 Rings</h4>
+                <audio controls>
+                    <source src="~/music/Ariana Grande - 7 Rings.mp3" id="song" type="audio/mp3" />
+                </audio>
+                <h4 id="name">Imagine Dragons - Thunder</h4>
+                <audio controls>
+                    <source src="~/music/Imagine Dragons - Thunder.mp3" id="song" type="audio/mp3" />
+                </audio>
+            </div>
+
+            <p></p>
+            <div id="addsong">
+                @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <h4>Add new song</h4>
+                    <input type="file" name="upload"  /><br>
+                    <input type="submit" value="Upload"  class="btn btn-warning" />
+
+                }
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<style>
+    #top {
+        width: 1366px;
+        margin-top: 20px;
+        background-color: indigo;
+        color: white;
+        font-family: Century;
+        padding: 20px 20px 20px 30px;
+    }
+    #addsong{
+        width: 1366px;
+        margin-top: 20px;
+        background-color:mediumslateblue;
+        color: white;
+        font-family: Century;
+        padding: 20px 20px 30px 30px;
+        
+    }
+  
+
+    .header {
+        background-color: mediumpurple;
+        margin: 0px 0px 0px -10px;
+        padding: 20px 30px 35px 35px;
+        width: 1376px;
+        height: 83px;
+    }
+
+    .h ul {
+        margin-left: 35px;
+        margin-top: 2px;
+    }
+
+        .h ul li {
+            list-style: none;
+            display: inline-block;
+            padding-left: 170px;
+        }
+
+            .h ul li a {
+                transition: .25s;
+                display: inline-block;
+                font-size: 15px;
+                color: white;
+            }
+
+
+                .h ul li a:hover {
+                    color: #f96a00;
+                    transition: .25s;
+                }
+</style>

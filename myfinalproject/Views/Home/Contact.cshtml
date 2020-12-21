@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+
+<div class="header">
+    <nav class="h">
+
+        <ul>
+            <li> <a href="@Url.Action("Index","Home")">Top chart</a></li>
+            <li> <a href="@Url.Action("Contact","Home")">Contact us</a></li>
+            <li> <a href="@Url.Action("About","Home")">About us</a></li>
+            <li><a href="@Url.Action("Login","Home")" class="btn btn-warning"> Log in</a></li>
+            <li><a href="@Url.Action("Logout","Home")" class="btn btn-warning"> Log out</a></li>
+        </ul>
+    </nav>
+</div>
+<h3>Contacts</h3>
+<h4>Balken Aruzhan</h4>
+<p>IITU, MCM department, CS-1701K</p>
+<p>Almaty, 2020</p>
+<style>
+
+    .header {
+        background-color: mediumpurple;
+        margin: 0px 0px 0px -10px;
+        padding: 20px 30px 35px 35px;
+        width: 1376px;
+        height: 83px;
+    }
+
+    .h ul {
+        margin-left: 35px;
+        margin-top: 2px;
+    }
+
+        .h ul li {
+            list-style: none;
+            display: inline-block;
+            padding-left: 170px;
+        }
+
+            .h ul li a {
+                transition: .25s;
+                display: inline-block;
+                font-size: 15px;
+                color: white;
+            }
+
+
+                .h ul li a:hover {
+                    color: #f96a00;
+                    transition: .25s;
+                }
+</style>
+
+

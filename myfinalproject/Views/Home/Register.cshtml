@@ -1,0 +1,112 @@
+﻿@model myfinalproject.Models.User
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="header">
+    <nav class="h">
+
+        <ul>
+            <li> <a href="@Url.Action("Index","Home")">Top chart</a></li>
+            <li> <a href="@Url.Action("Contact","Home")">Contact us</a></li>
+            <li> <a href="@Url.Action("About","Home")">About us</a></li>
+            <li><a href="@Url.Action("Login","Home")" class="btn btn-warning"> Log in</a></li>
+            <li><a href="@Url.Action("Logout","Home")" class="btn btn-warning"> Log out</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="row justify-content-md-center">
+    <div class="col-md-5">
+        @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+        {
+            //@Html.ValidationSummary()
+            @Html.AntiForgeryToken()
+
+            <div id="registerpage" class="card">
+                <div class="card-header">
+                    <div class="card-title"><h3>Register</h3></div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FirstName)
+                        @Html.TextBoxFor(m => m.FirstName, "", new { @class = "form-control", @placeholder = "First Name" })
+                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LastName)
+                        @Html.TextBoxFor(m => m.LastName, "", new { @class = "form-control", @placeholder = "Last Name" })
+                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "badge badge-danger" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "badge badge-danger" })
+                        @if (ViewBag.error != null)
+                        {
+                            <span class="badge badge-danger">@ViewBag.error</span>
+                        }
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ConfirmPassword)
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confim Password" })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-danger" value="Register" />
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+<style>
+    #registerpage {
+        margin-left: 20px;
+        margin-top: 20px;
+        background-color: indigo;
+        color: white;
+        font-family: Century;
+        padding: 20px 20px 20px 20px;
+    }
+
+    .header {
+        background-color:mediumpurple;
+        margin: 0px 0px 0px -10px;
+        padding: 20px 30px 35px 35px;
+        width: 1376px;
+        height: 83px;
+    }
+
+    .h ul {
+        margin-left: 35px;
+        margin-top: 2px;
+    }
+
+        .h ul li {
+            list-style: none;
+            display: inline-block;
+            padding-left: 170px;
+        }
+
+            .h ul li a {
+                transition: .25s;
+                display: inline-block;
+                font-size: 15px;
+                color:white;
+            }
+
+
+                .h ul li a:hover {
+                    color: #f96a00;
+                    transition: .25s;
+                }
+</style>
+
